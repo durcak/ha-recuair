@@ -61,9 +61,11 @@ async def _validate_cloud(
     try:
         await cloud.login()
         devices = await cloud.devices()
-    except RecuairCloudAuthError:
+    except RecuairCloudAuthError as err:
+        _LOGGER.warning("Prihlásenie do cloudu Recuair zlyhalo: %s", err)
         return None, {"base": "cloud_invalid_auth"}
-    except RecuairCloudError:
+    except RecuairCloudError as err:
+        _LOGGER.warning("Cloud Recuair: %s", err)
         return None, {"base": "cloud_cannot_connect"}
     except Exception:  # noqa: BLE001
         _LOGGER.exception("Neočakávaná chyba pri prihlásení do cloudu Recuair")
@@ -170,7 +172,10 @@ class RecuairOptionsFlow(OptionsFlow):
                         CONF_SCAN_INTERVAL, default=current.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL)
                     ): SCAN_SELECTOR,
                     vol.Optional(
-                        CONF_CLOUD_USERNAME, description={"suggested_value": current.get(CONF_CLOUD_USERNAME)}
+                        CONF_CLOUD_USERNAME,
+                        description={
+                            "suggested_value": (user_input or {}).get(CONF_CLOUD_USERNAME) or current.get(CONF_CLOUD_USERNAME)
+                        },
                     ): USER_SELECTOR,
                     vol.Optional(CONF_CLOUD_PASSWORD): PASSWORD_SELECTOR,
                 }

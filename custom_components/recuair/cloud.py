@@ -7,6 +7,7 @@ code + PKCE cez prihlasovací formulár (e-mail/meno a heslo).
 from __future__ import annotations
 
 import base64
+from datetime import date
 import hashlib
 import re
 import secrets
@@ -144,7 +145,8 @@ class RecuairCloud:
 
     async def devices(self) -> list[dict[str, Any]]:
         """Zariadenia v účte: id, názov, sériové číslo, typ."""
-        data = await self._get("/devices", {"page": "0", "size": "50"})
+        # Rovnaké parametre ako webový portál (bez `loc` server požiadavku odmieta).
+        data = await self._get("/devices", {"loc": "sk_SK", "page": "0", "size": "20"})
         return [
             {
                 "id": item.get("_id"),
@@ -158,7 +160,10 @@ class RecuairCloud:
 
     async def observation(self, device_id: int) -> dict[str, Any]:
         """Posledné hodnoty zariadenia (observableValue) a stav pripojenia."""
-        data = await self._get(f"/dashboard/{device_id}", {"updateData": "true", "onlyObservation": "true"})
+        data = await self._get(
+            f"/dashboard/{device_id}",
+            {"updateData": "true", "onlyObservation": "false", "dateFrom": date.today().isoformat()},
+        )
         value = dict(((data or {}).get("observable") or {}).get("observableValue") or {})
         value["connected"] = (data or {}).get("connected")
         return value
