@@ -1,0 +1,81 @@
+{
+  "entity": {
+    "fan": {
+      "ventilation": {
+        "default": "mdi:fan",
+        "state_attributes": {
+          "preset_mode": {
+            "default": "mdi:fan",
+            "state": {
+              "auto": "mdi:fan-auto",
+              "holiday": "mdi:palm-tree",
+              "bypass": "mdi:swap-horizontal-bold"
+            }
+          }
+        }
+      }
+    },
+    "select": {
+      "mode_select": {
+        "default": "mdi:fan",
+        "state": {
+          "auto": "mdi:fan-auto",
+          "1": "mdi:fan-speed-1",
+          "2": "mdi:fan-speed-2",
+          "3": "mdi:fan-speed-3",
+          "4": "mdi:fan-plus",
+          "holiday": "mdi:palm-tree",
+          "bypass": "mdi:swap-horizontal-bold",
+          "off": "mdi:fan-off"
+        }
+      }
+    },
+    "sensor": {
+      "ventilation_intensity": {
+        "default": "mdi:fan"
+      },
+      "filter_status": {
+        "default": "mdi:air-filter"
+      },
+      "mode": {
+        "default": "mdi:fan",
+        "state": {
+          "auto": "mdi:fan-auto",
+          "1": "mdi:fan-speed-1",
+          "2": "mdi:fan-speed-2",
+          "3": "mdi:fan-speed-3",
+          "4": "mdi:fan-plus",
+          "holiday": "mdi:palm-tree",
+          "bypass": "mdi:swap-horizontal-bold",
+          "off": "mdi:fan-off"
+        }
+      },
+      "light_intensity": {
+        "default": "mdi:lightbulb-on-outline"
+      },
+      "firmware_version": {
+        "default": "mdi:chip"
+      },
+      "fan_speed_1": {
+        "default": "mdi:fan"
+      },
+      "fan_speed_2": {
+        "default": "mdi:fan"
+      },
+      "recovered_energy": {
+        "default": "mdi:heat-wave"
+      },
+      "filter_state": {
+        "default": "mdi:air-filter"
+      },
+      "error_state": {
+        "default": "mdi:alert-circle-outline"
+      }
+    },
+    "light": {
+      "mood_light": {
+        "default": "mdi:lightbulb-night"
+      }
+    }
+  }
+}
