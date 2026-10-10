@@ -158,12 +158,17 @@ class RecuairCloud:
             if item.get("_id") is not None
         ]
 
-    async def observation(self, device_id: int) -> dict[str, Any]:
-        """Posledné hodnoty zariadenia (observableValue) a stav pripojenia."""
+    async def observation(self, device_id: int, day: date | None = None) -> dict[str, Any]:
+        """Posledné hodnoty zariadenia (observableValue), stav pripojenia a energia podľa portálu.
+
+        `consumption` obsahuje energiu, ktorú ráta cloud: za obdobie od `day` (ekjDevicePeriod)
+        a celkom od uvedenia do prevádzky (ekjDeviceTotal). Počítadlo jednotky (energyKj) je iné číslo.
+        """
         data = await self._get(
             f"/dashboard/{device_id}",
-            {"updateData": "true", "onlyObservation": "false", "dateFrom": date.today().isoformat()},
+            {"updateData": "true", "onlyObservation": "false", "dateFrom": (day or date.today()).isoformat()},
         )
         value = dict(((data or {}).get("observable") or {}).get("observableValue") or {})
         value["connected"] = (data or {}).get("connected")
+        value["consumption"] = (data or {}).get("consumption") or {}
         return value

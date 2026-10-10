@@ -106,6 +106,12 @@
       "recovered_energy": {
         "name": "Zrekuperovaná energie"
       },
+      "recovered_energy_today": {
+        "name": "Zrekuperovaná energie dnes (portál)"
+      },
+      "recovered_energy_total": {
+        "name": "Zrekuperovaná energie celkem (portál)"
+      },
       "filter_state": {
         "name": "Stav filtru"
       },

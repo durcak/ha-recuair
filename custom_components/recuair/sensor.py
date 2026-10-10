@@ -57,6 +57,10 @@ def _float(value: Any) -> float | None:
         return None
 
 
+def _kwh(kj: Any) -> float | None:
+    return round(v / 3600, 3) if (v := _float(kj)) is not None else None
+
+
 LOCAL_SENSORS: tuple[LocalSensorDescription, ...] = (
     LocalSensorDescription(
         key="co2", translation_key="co2", device_class=SensorDeviceClass.CO2,
@@ -123,7 +127,19 @@ CLOUD_SENSORS: tuple[CloudSensorDescription, ...] = (
         key="recovered_energy", translation_key="recovered_energy", device_class=SensorDeviceClass.ENERGY,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR, state_class=SensorStateClass.TOTAL_INCREASING,
         suggested_display_precision=1,
-        value_fn=lambda d: round(v / 3600, 3) if (v := _float(d.get("energyKj"))) is not None else None,
+        value_fn=lambda d: _kwh(d.get("energyKj")),
+    ),
+    CloudSensorDescription(
+        key="recovered_energy_today", translation_key="recovered_energy_today", device_class=SensorDeviceClass.ENERGY,
+        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR, state_class=SensorStateClass.TOTAL_INCREASING,
+        suggested_display_precision=2,
+        value_fn=lambda d: _kwh((d.get("consumption") or {}).get("ekjDevicePeriod")),
+    ),
+    CloudSensorDescription(
+        key="recovered_energy_total", translation_key="recovered_energy_total", device_class=SensorDeviceClass.ENERGY,
+        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR, state_class=SensorStateClass.TOTAL_INCREASING,
+        suggested_display_precision=1,
+        value_fn=lambda d: _kwh((d.get("consumption") or {}).get("ekjDeviceTotal")),
     ),
     CloudSensorDescription(
         key="filter_state", translation_key="filter_state", entity_category=EntityCategory.DIAGNOSTIC,

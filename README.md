@@ -25,7 +25,7 @@ Neoficiálna integrácia pre lokálne rekuperačné jednotky **[Recuair](https:/
 
 **Voliteľne z cloudu Recuair**
 - ⚙️ Otáčky oboch ventilátorov (ot/min)
-- ♻️ **Zrekuperovaná energia** (kWh)
+- ♻️ **Zrekuperovaná energia** (kWh) – počítadlo jednotky, dnes a celkom podľa portálu
 - 💧 Vlhkosť vonku, stav filtra, chybové hlásenia
 
 ## Inštalácia
@@ -69,6 +69,7 @@ Odporúčame jednotke v routeri nastaviť **pevnú IP adresu (DHCP rezerváciu)*
 | Intenzita vetrania | aktuálny výkon vetrania v % |
 | Opotrebenie filtra | koľko percent životnosti filtra je spotrebovaných |
 | Otáčky ventilátora 1/2, Zrekuperovaná energia, Vlhkosť vonku, Stav filtra, Chyby | len s cloudom |
+| Zrekuperovaná energia dnes / celkom (portál) | rovnaké čísla ako „Zrekuperovaná energia za obdobie/celkom“ na portáli; len s cloudom |
 
 ## Bezpečnostné upozornenie
 
@@ -87,6 +88,9 @@ logger:
 - **Jednotka nie je dostupná** – skúste IP adresu namiesto `recuair.local` a overte, že sa
   `http://<adresa>/` otvorí v prehliadači.
 - **Cloud: nesprávne údaje** – overte prihlásenie na [recuair.enobis.eu](https://recuair.enobis.eu).
+- **Zrekuperovaná energia je menšia ako na portáli** – senzor *Zrekuperovaná energia* je počítadlo v jednotke,
+  ktoré sa môže vynulovať (napr. po výpadku alebo aktualizácii). Portál sčítava energiu od uvedenia do prevádzky,
+  preto je jeho číslo väčšie. Obe rastú rovnako; pre celkový súčet použite *Zrekuperovaná energia celkom (portál)*.
 
 ## Licencia
 
@@ -100,5 +104,5 @@ Unofficial Home Assistant integration for **Recuair** decentralised heat-recover
 **DC40**). It reads the unit's local web interface and **controls it locally** – fan (Auto, speeds 1–4, Holiday,
 Bypass, off), RGB mood light, and sensors for CO₂, temperatures, humidity, ventilation intensity and filter wear,
 all with long-term statistics. Optionally, signing in to the Recuair cloud (recuair.enobis.eu) adds fan RPMs,
-recovered energy, outside humidity and filter/error state. Install via HACS as a custom repository. Existing
+recovered energy (unit counter, plus today/total as shown on the portal), outside humidity and filter/error state. Install via HACS as a custom repository. Existing
 configurations of the older `recuair` integration are migrated automatically.

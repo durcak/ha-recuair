@@ -65,6 +65,12 @@
       "recovered_energy": {
         "default": "mdi:heat-wave"
       },
+      "recovered_energy_today": {
+        "default": "mdi:heat-wave"
+      },
+      "recovered_energy_total": {
+        "default": "mdi:heat-wave"
+      },
       "filter_state": {
         "default": "mdi:air-filter"
       },

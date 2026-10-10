@@ -106,6 +106,12 @@
       "recovered_energy": {
         "name": "Recovered energy"
       },
+      "recovered_energy_today": {
+        "name": "Recovered energy today (portal)"
+      },
+      "recovered_energy_total": {
+        "name": "Recovered energy total (portal)"
+      },
       "filter_state": {
         "name": "Filter state"
       },

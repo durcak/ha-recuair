@@ -58,7 +58,7 @@ class RecuairCloudCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
     async def _async_update_data(self) -> dict[str, Any]:
         try:
-            return await self.cloud.observation(self.device_id)
+            return await self.cloud.observation(self.device_id, dt_util.now().date())
         except RecuairCloudError as err:
             raise UpdateFailed(str(err)) from err
 
