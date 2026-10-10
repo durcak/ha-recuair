@@ -1,0 +1,151 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Recuair",
+        "description": "Address of the unit on your local network, e.g. recuair.local or an IP address (recommended).",
+        "data": {
+          "host": "Unit address",
+          "scan_interval": "Update interval"
+        }
+      },
+      "cloud": {
+        "title": "Recuair account (optional)",
+        "description": "Signing in to recuair.enobis.eu adds fan speeds, recovered energy, outside humidity and filter state. Leave empty if you don't need it.",
+        "data": {
+          "cloud_username": "Email or username",
+          "cloud_password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "The unit is not reachable. Check the address (an IP is more reliable than recuair.local).",
+      "not_recuair": "There is no Recuair unit at this address.",
+      "cloud_invalid_auth": "Invalid cloud credentials.",
+      "cloud_cannot_connect": "The Recuair cloud is unavailable.",
+      "cloud_no_devices": "There is no unit in the account.",
+      "unknown": "Unexpected error, see the log."
+    },
+    "abort": {
+      "already_configured": "This unit is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Recuair settings",
+        "description": "Fill in the password only to change it. Clearing the username disables the cloud.",
+        "data": {
+          "host": "Unit address",
+          "scan_interval": "Update interval",
+          "cloud_username": "Email or username",
+          "cloud_password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "The unit is not reachable. Check the address (an IP is more reliable than recuair.local).",
+      "not_recuair": "There is no Recuair unit at this address.",
+      "cloud_invalid_auth": "Invalid cloud credentials.",
+      "cloud_cannot_connect": "The Recuair cloud is unavailable.",
+      "cloud_no_devices": "There is no unit in the account.",
+      "unknown": "Unexpected error, see the log."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "co2": {
+        "name": "CO₂"
+      },
+      "room_temperature": {
+        "name": "Room temperature"
+      },
+      "outside_temperature": {
+        "name": "Outside temperature"
+      },
+      "humidity": {
+        "name": "Humidity"
+      },
+      "ventilation_intensity": {
+        "name": "Ventilation intensity"
+      },
+      "filter_status": {
+        "name": "Filter wear"
+      },
+      "mode": {
+        "name": "Mode",
+        "state": {
+          "auto": "Auto",
+          "1": "Speed 1",
+          "2": "Speed 2",
+          "3": "Speed 3",
+          "4": "Speed 4",
+          "holiday": "Holiday",
+          "bypass": "Bypass",
+          "off": "Off"
+        }
+      },
+      "light_intensity": {
+        "name": "Light intensity"
+      },
+      "firmware_version": {
+        "name": "Firmware"
+      },
+      "last_successful_update": {
+        "name": "Last update"
+      },
+      "fan_speed_1": {
+        "name": "Fan 1 speed"
+      },
+      "fan_speed_2": {
+        "name": "Fan 2 speed"
+      },
+      "outside_humidity": {
+        "name": "Outside humidity"
+      },
+      "recovered_energy": {
+        "name": "Recovered energy"
+      },
+      "filter_state": {
+        "name": "Filter state"
+      },
+      "error_state": {
+        "name": "Errors"
+      }
+    },
+    "fan": {
+      "ventilation": {
+        "name": "Ventilation",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "auto": "Auto",
+              "holiday": "Holiday",
+              "bypass": "Bypass"
+            }
+          }
+        }
+      }
+    },
+    "select": {
+      "mode_select": {
+        "name": "Ventilation mode",
+        "state": {
+          "auto": "Auto",
+          "1": "Speed 1",
+          "2": "Speed 2",
+          "3": "Speed 3",
+          "4": "Speed 4",
+          "holiday": "Holiday",
+          "bypass": "Bypass",
+          "off": "Off"
+        }
+      }
+    },
+    "light": {
+      "mood_light": {
+        "name": "Mood light"
+      }
+    }
+  }
+}

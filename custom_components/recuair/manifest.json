@@ -1,0 +1,17 @@
+{
+  "domain": "recuair",
+  "name": "Recuair",
+  "codeowners": [
+    "@durcak"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/durcak/ha-recuair",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/durcak/ha-recuair/issues",
+  "loggers": [
+    "custom_components.recuair"
+  ],
+  "requirements": [],
+  "version": "0.2.0"
+}

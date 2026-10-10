@@ -1,0 +1,151 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Recuair",
+        "description": "Adresa jednotky v lokálnej sieti, napr. recuair.local alebo IP adresa (odporúčané).",
+        "data": {
+          "host": "Adresa jednotky",
+          "scan_interval": "Interval obnovy"
+        }
+      },
+      "cloud": {
+        "title": "Účet Recuair (voliteľné)",
+        "description": "Prihlásenie do recuair.enobis.eu pridá otáčky ventilátorov, zrekuperovanú energiu, vlhkosť vonku a stav filtra. Ak to nepotrebujete, nechajte prázdne.",
+        "data": {
+          "cloud_username": "E-mail alebo používateľ",
+          "cloud_password": "Heslo"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Jednotka nie je dostupná. Skontrolujte adresu (IP je spoľahlivejšia ako recuair.local).",
+      "not_recuair": "Na adrese nie je jednotka Recuair.",
+      "cloud_invalid_auth": "Nesprávne prihlasovacie údaje do cloudu.",
+      "cloud_cannot_connect": "Cloud Recuair je nedostupný.",
+      "cloud_no_devices": "V účte nie je žiadna jednotka.",
+      "unknown": "Neočakávaná chyba, pozri log."
+    },
+    "abort": {
+      "already_configured": "Táto jednotka je už pridaná."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Nastavenia Recuair",
+        "description": "Heslo vyplňte len pri zmene. Vymazaním používateľa sa cloud vypne.",
+        "data": {
+          "host": "Adresa jednotky",
+          "scan_interval": "Interval obnovy",
+          "cloud_username": "E-mail alebo používateľ",
+          "cloud_password": "Heslo"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Jednotka nie je dostupná. Skontrolujte adresu (IP je spoľahlivejšia ako recuair.local).",
+      "not_recuair": "Na adrese nie je jednotka Recuair.",
+      "cloud_invalid_auth": "Nesprávne prihlasovacie údaje do cloudu.",
+      "cloud_cannot_connect": "Cloud Recuair je nedostupný.",
+      "cloud_no_devices": "V účte nie je žiadna jednotka.",
+      "unknown": "Neočakávaná chyba, pozri log."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "co2": {
+        "name": "CO₂"
+      },
+      "room_temperature": {
+        "name": "Teplota dnu"
+      },
+      "outside_temperature": {
+        "name": "Teplota vonku"
+      },
+      "humidity": {
+        "name": "Vlhkosť"
+      },
+      "ventilation_intensity": {
+        "name": "Intenzita vetrania"
+      },
+      "filter_status": {
+        "name": "Opotrebenie filtra"
+      },
+      "mode": {
+        "name": "Režim",
+        "state": {
+          "auto": "Automatický",
+          "1": "Stupeň 1",
+          "2": "Stupeň 2",
+          "3": "Stupeň 3",
+          "4": "Stupeň 4",
+          "holiday": "Dovolenka",
+          "bypass": "Bypass",
+          "off": "Vypnuté"
+        }
+      },
+      "light_intensity": {
+        "name": "Intenzita svetla"
+      },
+      "firmware_version": {
+        "name": "Firmvér"
+      },
+      "last_successful_update": {
+        "name": "Posledná aktualizácia"
+      },
+      "fan_speed_1": {
+        "name": "Otáčky ventilátora 1"
+      },
+      "fan_speed_2": {
+        "name": "Otáčky ventilátora 2"
+      },
+      "outside_humidity": {
+        "name": "Vlhkosť vonku"
+      },
+      "recovered_energy": {
+        "name": "Zrekuperovaná energia"
+      },
+      "filter_state": {
+        "name": "Stav filtra"
+      },
+      "error_state": {
+        "name": "Chyby"
+      }
+    },
+    "fan": {
+      "ventilation": {
+        "name": "Vetranie",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "auto": "Automatický",
+              "holiday": "Dovolenka",
+              "bypass": "Bypass"
+            }
+          }
+        }
+      }
+    },
+    "select": {
+      "mode_select": {
+        "name": "Režim vetrania",
+        "state": {
+          "auto": "Automatický",
+          "1": "Stupeň 1",
+          "2": "Stupeň 2",
+          "3": "Stupeň 3",
+          "4": "Stupeň 4",
+          "holiday": "Dovolenka",
+          "bypass": "Bypass",
+          "off": "Vypnuté"
+        }
+      }
+    },
+    "light": {
+      "mood_light": {
+        "name": "Náladové osvetlenie"
+      }
+    }
+  }
+}
